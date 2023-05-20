@@ -1,18 +1,16 @@
 import { useState } from 'react';
 import { PortfolioItemPage } from './pages/PortfolioItemPage';
 import { PortfolioPage } from './pages/PortfolioPage';
-import { portfolioItems } from './utils/data';
 
 export const App = () => {
-  console.log(portfolioItems);
-  const [selectedItem, setSelectedItem] = useState(portfolioItems[0]);
+  const [selectedItem, setSelectedItem] = useState();
 
   return (
-    <div className="App">
+    <div>
       {selectedItem ? (
-        <PortfolioItemPage item={selectedItem} />
+        <PortfolioItemPage item={selectedItem} clickFn={setSelectedItem} />
       ) : (
-        <PortfolioPage />
+        <PortfolioPage clickFn={setSelectedItem} />
       )}
     </div>
   );
